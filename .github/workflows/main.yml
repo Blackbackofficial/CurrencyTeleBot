@@ -21,9 +21,9 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Migrate Warranty
-      run: |
-        python BotConvertor.py
+#    - name: Migrate Warranty
+#      run: |
+#        python BotConvertor.py
     - name: Deploy Warranty service
       uses: akhileshns/heroku-deploy@v3.4.6
       with:

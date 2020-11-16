@@ -13,6 +13,7 @@ def all_message(update, context):
     try:
         money = float(text)
         requestsCB = requests.get('https://www.cbr-xml-daily.ru/daily_json.js').json()
+        # context.bot.send_message(chat_id=chat.id, text="")
         money = money * requestsCB['Valute']['USD']['Value']
         context.bot.send_message(chat_id=chat.id, text=str(money))
     except:

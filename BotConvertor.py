@@ -1,5 +1,5 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler
-from handler import Handler
+from handler import Handler, Convertor
 import const
 
 
@@ -11,8 +11,11 @@ def main():
     dp.add_handler(CommandHandler("start", Handler.start))
     dp.add_handler(CommandHandler("reload", Handler.reload))
     dp.add_handler(
-        ConversationHandler(entry_points=[MessageHandler(Filters.regex('Конвертировать'), Handler.converter_start)],
-                            states={},
+        ConversationHandler(entry_points=[MessageHandler(Filters.regex('Конвертировать'), Convertor.convertor_start)],
+                            states={
+                                "currency": [MessageHandler(Filters.text, Convertor.convertor_currency)],
+                                "value": [MessageHandler(Filters.text, Convertor.convertor_value)]
+                            },
                             fallbacks=[]))
     dp.add_handler(MessageHandler(Filters.all, Handler.all_message))
 

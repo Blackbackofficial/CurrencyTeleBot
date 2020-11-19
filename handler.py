@@ -13,7 +13,6 @@ class Handler:
         self.message = None
         self.effective_chat = None
 
-    # Handlers
     def start(self, context):
         chat = self.effective_chat
         self.message.reply_text(
@@ -46,30 +45,35 @@ class Convertor(Handler):
         return "currency"
 
     def convertor_currency(self, context):
-        if not self.message.text == '↺' and 'Назад':
-            context.user_data['currency'] = self.message.text.replace(" → ", "")
-            # context.user_data['currency'] = ' '.join(context.user_data['currency'].split(' ')[::-1]).replace(" ", "")
-            self.message.reply_text("Напишите число для перевода!")
-            return "value"
-        elif self.message.text == 'Назад':
-            Handler.all_message(self, context)
-            Handler.return_flag = True
-            return ConversationHandler.END
+        if self.message.text in const.CURRENCY:
+
+            if not self.message.text == '↺' and 'Назад':
+                context.user_data['currency'] = self.message.text.replace(" → ", "")
+                self.message.reply_text("Напишите число для перевода!")
+                return "value"
+            elif self.message.text == 'Назад':
+                Handler.all_message(self, context)
+                Handler.return_flag = True
+                return ConversationHandler.END
+            else:
+                Handler.all_message(self, context)
+
         else:
-            Handler.all_message(self, context)
+            self.message.reply_text("Вы не выбрани ни одной кнопки!")
 
     def convertor_value(self, context):
         if self.message.text == 'Назад' and '↺':
             Handler.all_message(self, context)
             Handler.return_flag = True
             return ConversationHandler.END
-        value = context.user_data['value'] = float(self.message.text)
-        chat = self.effective_chat
         try:
+            value = context.user_data['value'] = float(self.message.text)
+            chat = self.effective_chat
             requestsCB = requests.get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={}&interval=1'
                                       'min&apikey=UWFL45VWBLIXSZD3'.format(context.user_data['currency'])).json()
             value = value * float(requestsCB['Global Quote']['05. price'])
-            context.bot.send_message(chat_id=chat.id, text=str(value) + '$', reply_markup=first_markup())
+            context.bot.send_message(chat_id=chat.id, text=str(value), reply_markup=first_markup())
             return ConversationHandler.END
-        except:
-            context.bot.send_message(chat_id=chat.id, text="Напишите число для перевода!")
+        except ValueError:
+            self.message.reply_text("Вы меня сломали!", reply_markup=first_markup())
+            return ConversationHandler.END

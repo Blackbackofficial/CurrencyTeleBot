@@ -8,3 +8,6 @@ ANSWERS_ERRORS = ['Уххх, мне не очень понятно.', 'А? Я н
                   'Преобразую буквы в цыфры... \nУпс, что-то пошло не так.',
                   'Я знаю Python, и команды ниже, попробуй еще разок.']
 
+CURRENCY = ['RUB → USD', 'RUB → EUR', 'RUB → CHF', 'RUB → TRY', 'RUB → JPY', 'RUB → BTC', '↺', 'Назад',
+            'USD → RUB', 'EUR → RUB', 'CHF → RUB', 'TRY → RUB', 'JPY → RUB', 'BTC → RUB', "/start"]
+

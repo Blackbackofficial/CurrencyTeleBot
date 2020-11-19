@@ -60,11 +60,11 @@ class Convertor(Handler):
             self.message.reply_text("Вы не выбрани ни одной кнопки!")
 
     def convertor_value(self, context):
-        if self.message.text == 'Назад':
-            Handler.all_message(self, context)
-            Handler.return_flag = True
-            return ConversationHandler.END
         try:
+            if self.message.text == 'Назад':
+                Handler.all_message(self, context)
+                Handler.return_flag = True
+                return ConversationHandler.END
             value = context.user_data['value'] = float(self.message.text)
             chat = self.effective_chat
             requestsCB = requests.get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={}&interval=1'

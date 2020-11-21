@@ -16,14 +16,10 @@ def main():
                             states={
                                 "currency": [MessageHandler(Filters.text, Convertor.convertor_currency)],
                                 "value": [MessageHandler(Filters.text, Convertor.convertor_value)]
-                            },
-                            fallbacks=[]))
+                            }, fallbacks=[]))
     dp.add_handler(
         ConversationHandler(entry_points=[MessageHandler(Filters.regex('Курс'), Course.start_course)],
-                            states={
-                                "currency": [MessageHandler(Filters.text, Course.enter_currency)],
-                            },
-                            fallbacks=[]))
+                            states={"currency": [MessageHandler(Filters.text, Course.enter_currency)]}, fallbacks=[]))
     dp.add_handler(MessageHandler(Filters.all, Handler.all_message))
 
     updater.start_polling()

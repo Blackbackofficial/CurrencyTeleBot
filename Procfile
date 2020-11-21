@@ -1,1 +1,1 @@
-bot: python BotConvertor.py
+bot: python bot.py

@@ -13,7 +13,7 @@ class Convertor(Handler):
 
     def convertor_currency(self, context):
         if self.message.text in const.CURRENCY:
-            if not self.message.text == '↺' and not self.message.text == 'Назад':
+            if not self.message.text == '↹' and not self.message.text == 'Назад':
                 context.user_data['currency'] = self.message.text.replace(" → ", "")
                 self.message.reply_text("Напишите число для перевода!")
                 return "value"

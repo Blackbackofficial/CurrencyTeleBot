@@ -57,7 +57,7 @@ class Convertor(Handler):
             else:
                 Handler.all_message(self, context)
         else:
-            self.message.reply_text("Вы не выбрани ни одной кнопки!")
+            self.message.reply_text("Вы не выбрали ни одной кнопки!")
 
     def convertor_value(self, context):
         try:
@@ -67,9 +67,9 @@ class Convertor(Handler):
                 return ConversationHandler.END
             value = context.user_data['value'] = float(self.message.text)
             chat = self.effective_chat
-            requestsCB = requests.get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={}&interval=1'
+            requestsIB = requests.get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={}&interval=1'
                                       'min&apikey=UWFL45VWBLIXSZD3'.format(context.user_data['currency'])).json()
-            value = value * float(requestsCB['Global Quote']['05. price'])
+            value = value * float("{0:.2f}".format(float(requestsIB['Global Quote']['05. price'])))
             context.bot.send_message(chat_id=chat.id, text=str(value), reply_markup=first_markup())
             return ConversationHandler.END
         except ValueError:

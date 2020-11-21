@@ -35,3 +35,15 @@ def re_second_markup():
                                          [course_markup_btn4, course_markup_btn5, course_markup_btn6],
                                          ['↺', 'Назад']], resize_keyboard=True)
     return course_markup
+
+
+def third_markup():
+    course_usd = KeyboardButton('USD')
+    course_eur = KeyboardButton('EUR')
+    course_chf = KeyboardButton('CHF')
+    course_try = KeyboardButton('TRY')
+    course_jpy = KeyboardButton('JPY')
+    course_btc = KeyboardButton('BTC')
+    course = ReplyKeyboardMarkup([[course_usd, course_eur, course_chf],
+                                  [course_try, course_jpy, course_btc], ['Назад']], resize_keyboard=True)
+    return course

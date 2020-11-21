@@ -1,5 +1,6 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler
-from handler import Handler, Convertor
+from functional.handler import Handler, Convertor
+from functional.course import Course
 import const
 
 
@@ -15,6 +16,12 @@ def main():
                             states={
                                 "currency": [MessageHandler(Filters.text, Convertor.convertor_currency)],
                                 "value": [MessageHandler(Filters.text, Convertor.convertor_value)]
+                            },
+                            fallbacks=[]))
+    dp.add_handler(
+        ConversationHandler(entry_points=[MessageHandler(Filters.regex('Курс'), Course.start_course)],
+                            states={
+                                "currency": [MessageHandler(Filters.text, Course.enter_currency)],
                             },
                             fallbacks=[]))
     dp.add_handler(MessageHandler(Filters.all, Handler.all_message))

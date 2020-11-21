@@ -3,38 +3,35 @@ from telegram import KeyboardButton
 
 
 def first_markup():
-    first_markup_btn1 = KeyboardButton('Конвертировать🔄')
-    first_markup_btn2 = KeyboardButton('Курс📈')
-    first_markup_btn3 = KeyboardButton('Закрыть')
-    base_markup = ReplyKeyboardMarkup([[first_markup_btn1, first_markup_btn2], [first_markup_btn3]],
-                                      resize_keyboard=True)
+    first_conv = KeyboardButton('Конвертировать🔄')
+    first_course = KeyboardButton('Курс📈')
+    first_close = KeyboardButton('Закрыть')
+    base_markup = ReplyKeyboardMarkup([[first_conv, first_course], [first_close]], resize_keyboard=True)
     return base_markup
 
 
 def second_markup():
-    rewrite_course_btn1 = KeyboardButton('USD → RUB')
-    rewrite_course_btn2 = KeyboardButton('EUR → RUB')
-    rewrite_course_btn3 = KeyboardButton('CHF → RUB')
-    rewrite_course_btn4 = KeyboardButton('TRY → RUB')
-    rewrite_course_btn5 = KeyboardButton('JPY → RUB')
-    rewrite_course_btn6 = KeyboardButton('BTC → RUB')
-    rewrite_course = ReplyKeyboardMarkup([[rewrite_course_btn1, rewrite_course_btn2, rewrite_course_btn3],
-                                          [rewrite_course_btn4, rewrite_course_btn5, rewrite_course_btn6],
-                                          ['↹', 'Назад']], resize_keyboard=True)
-    return rewrite_course
+    second_usd = KeyboardButton('USD → RUB')
+    second_eur = KeyboardButton('EUR → RUB')
+    second_chf = KeyboardButton('CHF → RUB')
+    second_try = KeyboardButton('TRY → RUB')
+    second_jpy = KeyboardButton('JPY → RUB')
+    second_btc = KeyboardButton('BTC → RUB')
+    second_course = ReplyKeyboardMarkup([[second_usd, second_eur, second_chf], [second_try, second_jpy, second_btc],
+                                         ['↹', 'Назад']], resize_keyboard=True)
+    return second_course
 
 
 def re_second_markup():
-    course_markup_btn1 = KeyboardButton('RUB → USD')
-    course_markup_btn2 = KeyboardButton('RUB → EUR')
-    course_markup_btn3 = KeyboardButton('RUB → CHF')
-    course_markup_btn4 = KeyboardButton('RUB → TRY')
-    course_markup_btn5 = KeyboardButton('RUB → JPY')
-    course_markup_btn6 = KeyboardButton('RUB → BTC')
-    course_markup = ReplyKeyboardMarkup([[course_markup_btn1, course_markup_btn2, course_markup_btn3],
-                                         [course_markup_btn4, course_markup_btn5, course_markup_btn6],
-                                         ['↹', 'Назад']], resize_keyboard=True)
-    return course_markup
+    re_2_usd = KeyboardButton('RUB → USD')
+    re_2_eur = KeyboardButton('RUB → EUR')
+    re_2_chf = KeyboardButton('RUB → CHF')
+    re_2_try = KeyboardButton('RUB → TRY')
+    re_2_jpy = KeyboardButton('RUB → JPY')
+    re_2_btc = KeyboardButton('RUB → BTC')
+    re_2_markup = ReplyKeyboardMarkup([[re_2_usd, re_2_eur, re_2_chf], [re_2_try, re_2_jpy, re_2_btc],
+                                       ['↹', 'Назад']], resize_keyboard=True)
+    return re_2_markup
 
 
 def third_markup():
@@ -44,6 +41,6 @@ def third_markup():
     course_try = KeyboardButton('TRY')
     course_jpy = KeyboardButton('JPY')
     course_btc = KeyboardButton('BTC')
-    course = ReplyKeyboardMarkup([[course_usd, course_eur, course_chf],
-                                  [course_try, course_jpy, course_btc], ['Назад']], resize_keyboard=True)
+    course = ReplyKeyboardMarkup([[course_usd, course_eur, course_chf], [course_try, course_jpy, course_btc],
+                                  ['Назад']], resize_keyboard=True)
     return course

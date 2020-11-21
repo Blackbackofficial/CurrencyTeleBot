@@ -1,4 +1,4 @@
-name: Сurrency Converter TeleBot
+name: Сurrency Converter Bot
 
 on: [ push ]
 
@@ -21,7 +21,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Deploy Warranty service
+    - name: Deploy Currency Bot
       uses: akhileshns/heroku-deploy@v3.4.6
       with:
         heroku_api_key: 9bb8f29a-3dab-4878-86a3-33ab7960a1cb

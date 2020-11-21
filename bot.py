@@ -1,5 +1,5 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler
-from functional.handler import Handler, Convertor
+from handler import Handler, Convertor
 from functional.course import Course
 import const
 

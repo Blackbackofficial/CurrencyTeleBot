@@ -1,4 +1,4 @@
-from functional.handler import Handler
+from handler import Handler
 from markups import third_markup
 from telegram.ext import ConversationHandler
 from telegram import ParseMode

@@ -1,3 +1,4 @@
+from telegram import ParseMode
 from handler import Handler
 from markups import first_markup, second_markup
 from telegram.ext import ConversationHandler
@@ -33,11 +34,12 @@ class Convertor(Handler):
                 Handler.return_flag = True
                 return ConversationHandler.END
             value = context.user_data['value'] = float(self.message.text)
-            chat = self.effective_chat
             requestsIB = requests.get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={}&interval=1'
                                       'min&apikey=UWFL45VWBLIXSZD3'.format(context.user_data['currency'])).json()
             value = value * float("{0:.2f}".format(float(requestsIB['Global Quote']['05. price'])))
-            context.bot.send_message(chat_id=chat.id, text=str(value), reply_markup=first_markup())
+            currency = context.user_data['currency'][0:3]
+            text = '<b>{currency}:</b> <code>{value}</code>₽'.format(currency=currency, value=str(value))
+            self.message.reply_text(text, parse_mode=ParseMode.HTML, reply_markup=first_markup())
             return ConversationHandler.END
         except ValueError:
             self.message.reply_text("Вы меня сломали!", reply_markup=first_markup())

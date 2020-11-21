@@ -11,4 +11,3 @@ ANSWERS_ERRORS = ['Уххх, мне не очень понятно.', 'А? Я н
 CURRENCY = ['RUB → USD', 'RUB → EUR', 'RUB → CHF', 'RUB → TRY', 'RUB → JPY', 'RUB → BTC', '↹', 'Назад',
             'USD → RUB', 'EUR → RUB', 'CHF → RUB', 'TRY → RUB', 'JPY → RUB', 'BTC → RUB', "/start",
             'USD', 'EUR', 'CHF', 'TRY', 'JPY', 'BTC']
-

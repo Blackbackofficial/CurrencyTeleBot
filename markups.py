@@ -20,7 +20,7 @@ def second_markup():
     rewrite_course_btn6 = KeyboardButton('BTC → RUB')
     rewrite_course = ReplyKeyboardMarkup([[rewrite_course_btn1, rewrite_course_btn2, rewrite_course_btn3],
                                           [rewrite_course_btn4, rewrite_course_btn5, rewrite_course_btn6],
-                                          ['⇋', 'Назад']], resize_keyboard=True)
+                                          ['↹', 'Назад']], resize_keyboard=True)
     return rewrite_course
 
 
@@ -33,7 +33,7 @@ def re_second_markup():
     course_markup_btn6 = KeyboardButton('RUB → BTC')
     course_markup = ReplyKeyboardMarkup([[course_markup_btn1, course_markup_btn2, course_markup_btn3],
                                          [course_markup_btn4, course_markup_btn5, course_markup_btn6],
-                                         ['⇋', 'Назад']], resize_keyboard=True)
+                                         ['↹', 'Назад']], resize_keyboard=True)
     return course_markup
 
 

@@ -11,7 +11,7 @@ class Handler:
         self.message = None
         self.effective_chat = None
 
-    def start(self, context=None):
+    def start(self, context):
         chat = self.effective_chat
         self.message.reply_text(
             "Привет {}, мне еще не дали имени, я расскажу тебе что там с курсом".format(chat.first_name),

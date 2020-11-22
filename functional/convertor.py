@@ -6,6 +6,13 @@ import requests
 import const
 
 
+def filter_currency(context):
+    currency = context.user_data['currency'][3:6]
+    element = const.CURRENCY.index(currency)
+    currency = const.CURRENCY_ICON[element]
+    return currency
+
+
 class Convertor(Handler):
 
     def convertor_start(self, context):
@@ -38,7 +45,8 @@ class Convertor(Handler):
                                       'min&apikey=UWFL45VWBLIXSZD3'.format(context.user_data['currency'])).json()
             value = value * float("{0:.2f}".format(float(requestsIB['Global Quote']['05. price'])))
             currency = context.user_data['currency'][0:3]
-            text = '<b>{currency}:</b> <code>{value}</code>₽'.format(currency=currency, value=str(value))
+            val = filter_currency(context=context)
+            text = '<b>{currency}:</b> <code>{value}</code>{val}'.format(currency=currency, value=str(value), val=val)
             self.message.reply_text(text, parse_mode=ParseMode.HTML, reply_markup=first_markup())
             return ConversationHandler.END
         except ValueError:

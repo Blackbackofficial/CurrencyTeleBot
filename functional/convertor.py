@@ -43,7 +43,8 @@ class Convertor(Handler):
             value = context.user_data['value'] = float(self.message.text)
             requestsIB = requests.get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={}&interval=1'
                                       'min&apikey=UWFL45VWBLIXSZD3'.format(context.user_data['currency'])).json()
-            value = value * float("{0:.2f}".format(float(requestsIB['Global Quote']['05. price'])))
+            value = value * float(float(requestsIB['Global Quote']['05. price']))
+            value = "{0:.2f}".format(value)
             currency = context.user_data['currency'][0:3]
             val = filter_currency(context=context)
             text = '<b>{currency}:</b> <code>{value}</code>{val}'.format(currency=currency, value=str(value), val=val)

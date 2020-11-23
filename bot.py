@@ -1,11 +1,11 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler
 from functional.convertor import Convertor
+from settings import TG_TOKEN, TG_API_URL
 from functional.course import Course
 from handler import Handler
-import const
 
 
-updater = Updater(const.TOKEN, use_context=True)
+updater = Updater(TG_TOKEN, TG_API_URL, use_context=True)
 dp = updater.dispatcher
 
 

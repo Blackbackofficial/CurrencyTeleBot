@@ -1,0 +1,2 @@
+TG_TOKEN = "1385661797:AAEHQRLhai0GBRKT82nv265wcLBjtFYP53M"
+TG_API_URL = "https://t.me/CurrencyIvanBot"

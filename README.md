@@ -6,4 +6,3 @@ Converter + real-time currency exchange Rate and output graphs. The British Bank
 
 The python-telegram-bot library is used
 The python-telegram-bot library is used
-
